@@ -3,6 +3,7 @@
 node_modules/
 .husky/
 .vscode/
-eslintrc.js
+.eslintrc.js
+.prettierrc.json
 .eslintcache
 ./gitignore.swp
