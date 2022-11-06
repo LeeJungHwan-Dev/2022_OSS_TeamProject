@@ -1,5 +1,5 @@
 .DS_Store
-./module/token.js
+module/token.js
 node_modules/
 .husky/
 .vscode/
