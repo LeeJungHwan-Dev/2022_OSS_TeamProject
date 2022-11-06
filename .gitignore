@@ -1,0 +1,11 @@
+.DS_Store
+./module/token.js
+node_modules/
+.husky/
+.vscode/
+eslintrc.js
+token.txt
+.eslintcache
+./gitignore.swp
+./package-lock.json
+./package.json
