@@ -18,7 +18,7 @@ rtm.on('message', (message) => {
         greeting(rtm, channel);
         break;
       default:
-        rtm.sendMessage(" I'm alive", channel);
+        rtm.sendMessage("I'm alive", channel);
     }
   }
 });
