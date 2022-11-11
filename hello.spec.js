@@ -30,7 +30,7 @@ describe('테스트를 시작합니다.', async () => {
   // efore(async () => (res = await greeting(rtm, channel)));
 
   if (
-    ('인사 모듈 테스트',
+    ('인사 모듈 테스트!',
     function (done) {
       console.log(res);
       assert.equal(res, 'success');
