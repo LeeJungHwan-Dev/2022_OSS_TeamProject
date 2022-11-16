@@ -16,7 +16,7 @@ const searchSchedule = function (day, list, channel, rtm) {
   for (let i = 0; i < list.length; i += 1) {
     if (list[i].includes(day)) {
       result = `${list[i]} 입니다`;
-      result = `${result.slice(0, 5)}일은 ${result.slice(6, result.length)}`;
+      result = `${result.slice(0, 5)}는 ${result.slice(6, result.length)}`;
       resultOk = true;
       break;
     }
