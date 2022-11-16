@@ -2,7 +2,7 @@ const { RTMClient } = require('@slack/rtm-api');
 const greeting = require('./module/greeting');
 const token = require('./module/token');
 const square = require('./module/square');
-const sendAcademicSchedule = require('./module/searchAcademicScheduleModule');
+const searchAcademicSchedule = require('./module/searchAcademicScheduleModule');
 
 let checkSchedule = false;
 
@@ -14,7 +14,7 @@ rtm.on('message', (message) => {
   const { text } = message;
 
   if (checkSchedule) {
-    sendAcademicSchedule(rtm, channel, text);
+    searchAcademicSchedule(rtm, channel, text);
   } else if (!isNaN(text)) {
     square(rtm, text, channel);
   } else {
