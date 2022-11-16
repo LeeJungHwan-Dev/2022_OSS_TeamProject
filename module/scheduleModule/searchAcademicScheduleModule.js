@@ -20,7 +20,7 @@ const sendAcademicSchedule = function (rtm, channel, text) {
   )}/${`00${inputDay.getDate()}`.slice(-2)}`;
 
   if (isNaN(inputDay)) {
-    rtm.sendMessage('올바른 날짜를 입력해주세요.', channel);
+    rtm.sendMessage('올바른 날짜를 입력해주세요. ex) 10/24 ', channel);
   } else {
     getAcademicSchedule(resultDay, channel, rtm);
   }
