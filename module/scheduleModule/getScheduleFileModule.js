@@ -12,7 +12,7 @@ const getScheduleFile = function (day, channel, rtm) {
   const fs = require('fs');
 
   fs.readFile(
-    '/Users/lee/Desktop/2_study/2022_OSS_TeamProject/학사일정.txt',
+    '/Users/lee/Desktop/2_study/2022_OSS_TeamProject/module/학사일정.txt',
     'utf8',
     (err, data) => {
       if (err) {

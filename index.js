@@ -20,7 +20,7 @@ rtm.on('message', (message) => {
     square(rtm, text, channel);
   } else {
     switch (text) {
-      case 'hi':
+      case '안녕?':
         greeting(rtm, channel);
         break;
       case '학사일정':
