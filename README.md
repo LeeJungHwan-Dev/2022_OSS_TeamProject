@@ -2,7 +2,12 @@
 
 <img src = "https://img.shields.io/badge/Node.js-v18.11.0-blue"/>  ![GitHub](https://img.shields.io/github/license/LeeJungHwan-Dev/JBNU_Slack_ChatBot)
 
-![전챗](https://user-images.githubusercontent.com/93726941/202358478-ac261d45-1976-47e3-a3dc-e714a41aaa0a.png) 
+![전챗](https://user-images.githubusercontent.com/93726941/202358478-ac261d45-1976-47e3-a3dc-e714a41aaa0a.png)
+</br>
+
+## ✅ PreView
+<div align = "center"><img src = "https://user-images.githubusercontent.com/93726941/202402391-5ce88ac2-c656-4f38-8e17-b950cabc2f26.gif"/></div>
+
 </br>
 
 ## 🔎 프로그래 소개
@@ -70,14 +75,26 @@
 #### ➕ 학사일정 및 학과 사무실 데이터 입력 방법
 ~~~~
 학사일정 : module -> 학사일정.txt 이름으로 데이터 저장
+
+module
+  |_학사일정.txt 
+  
 * 데이터 저장 형식 : MM/DD comment
+
 학과사무실 : module -> 학과사무실.txt 이름으로 데이터 저장
+
+module
+  |_학과사무실.txt 
+  
 * 데이터 저장 형식 : 학과이름 위치
 ~~~~
 </br>
 
 ## 📄Docs
-* 스케줄 모듈 
+* 인사 모듈
+* 학사일정 모듈
+* 학식조회 모듈
+* 학과사무실 안내 모듈
 
 ## ⚙️ 테스트 환경 
 #### OS : Windows , MacOS ventura 13.0
