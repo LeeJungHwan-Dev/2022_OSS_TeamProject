@@ -1,4 +1,4 @@
-# 2022_OSS_TeamProject
+# JBNU_Slack_ChatBot
 
 ## ⭐️ 목표
 
