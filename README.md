@@ -1,8 +1,10 @@
 # ⭐️ JBNU_Slack_ChatBot
 
 <img src = "https://img.shields.io/badge/Node.js-v18.11.0-blue"/>  ![GitHub](https://img.shields.io/github/license/LeeJungHwan-Dev/JBNU_Slack_ChatBot)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FLeeJungHwan-Dev%2FJBNU_Slack_ChatBot&count_bg=%23FFA1FA&title_bg=%23000000&icon=slack.svg&icon_color=%23FFFFFF&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 ![전챗](https://user-images.githubusercontent.com/93726941/202358478-ac261d45-1976-47e3-a3dc-e714a41aaa0a.png)
+
 </br>
 
 ## ✅ PreView
