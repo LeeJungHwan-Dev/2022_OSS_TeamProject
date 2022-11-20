@@ -14,7 +14,12 @@ rtm.on('message', (message) => {
     square(rtm, text, channel);
   } else {
     switch (text) {
+      // 축약해서 한번에 정리하는 방법?
       case 'hi':
+      case 'hello':
+      case '안녕':
+      case '안녕하세요':
+      case '누구세요':
         greeting(rtm, channel);
         break;
       default:
