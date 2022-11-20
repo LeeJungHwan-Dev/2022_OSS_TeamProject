@@ -11,23 +11,13 @@ const sendSchedule = require('./sendAcademicScheduleModule');
 const getScheduleFile = function (day, channel, rtm, isLong) {
   const fs = require('fs');
 
-  fs.readFile(
-    '/Users/lee/Desktop/2_study/2022_OSS_TeamProject/module/haksa.txt',
-    'utf8',
-    (err, data) => {
-      if (err) {
-        console.error(err);
-      }
+  fs.readFile('module/haksa.txt', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+    }
 
-      return sendSchedule(
-        day,
-        data.toString().split('\n'),
-        channel,
-        rtm,
-        isLong,
-      );
-    },
-  );
+    return sendSchedule(day, data.toString().split('\n'), channel, rtm, isLong);
+  });
 };
 
 module.exports = getScheduleFile;
