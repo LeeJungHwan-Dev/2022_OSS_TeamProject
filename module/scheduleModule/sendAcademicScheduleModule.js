@@ -1,6 +1,7 @@
-const check = require('./isCheck');
+const check = require('./checkingScheduleSelect');
+const getDay = require('./longDayCheckModule');
 
-const searchSchedule = function (day, list, channel, rtm) {
+const searchSchedule = function (day, list, channel, rtm, isLong) {
   /**
    * 모듈 설명
    *
@@ -18,9 +19,20 @@ const searchSchedule = function (day, list, channel, rtm) {
   let result;
 
   for (let i = 0; i < list.length; i += 1) {
+    /// /////////////////// 날짜 범위 입력일 경우 아래 //////////////////////
+    /// //////////////////////////////////////////////////////////////
+    if (isLong === true) {
+      const date = getDay.getDate();
+      if (list[i].includes(date[0]) && list[i].includes(date[2])) {
+        result = list[i].trim().replace(' :', '는').concat('입니다.');
+        resultOk = true;
+        break;
+      }
+    }
+    /// /////////////////// 날짜 단일 입력일 경우 아래 //////////////////////
+    /// //////////////////////////////////////////////////////////////
     if (list[i].includes(day)) {
-      result = `${list[i]} 입니다`;
-      result = `${result.slice(0, 5)}는 ${result.slice(6, result.length)}`;
+      result = list[i].trim().replace(' :', '는').concat('입니다.');
       resultOk = true;
       break;
     }
@@ -31,7 +43,6 @@ const searchSchedule = function (day, list, channel, rtm) {
       '학사일정이 존재하지 않습니다, 처음으로 돌아갑니다.',
       channel,
     );
-
     check.setCheck(false);
   } else {
     rtm.sendMessage(result, channel);

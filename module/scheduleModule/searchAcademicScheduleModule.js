@@ -1,4 +1,5 @@
 const getAcademicSchedule = require('./getScheduleFileModule');
+const checkLongDay = require('./longDayCheckModule');
 
 /**
  * 모듈 설명
@@ -23,20 +24,33 @@ const getAcademicSchedule = require('./getScheduleFileModule');
  *
  * text => 사용자가 입력한 날짜 원형
  *
+ * isLong ?
+ * isLong변수는 checkLongDay() 함수에서 리턴하는 값을 담기 위한 변수로 '10/19 - 10/21'과 같은 입력을
+ * 판별하는 true / false를 담은 변수입니다.
+ *
+ * checkLongDay()?
+ * checkLongDay() 사용자가 입력한 text가 날짜가 맞는지 확인하고 '10/19 - 10/21'과 같이 범위가 지정된
+ * 날짜인지 판별하는 함수입니다.
+ *
  */
 
 const sendAcademicSchedule = function (rtm, channel, text) {
-  const inputDay = new Date(`0000${text}`);
-  const resultDay = `${`00${inputDay.getMonth() + 1}`.slice(
-    -2,
-  )}/${`00${inputDay.getDate()}`.slice(-2)}`;
-
-  const checkDay = text.indexOf('/', 1);
-
-  if (checkDay === -1 || checkDay === text.length - 1 || isNaN(inputDay)) {
-    rtm.sendMessage('올바른 날짜를 입력해주세요. ex) 10/24 ', channel);
+  const isLong = checkLongDay(text);
+  if (isLong === true) {
+    getAcademicSchedule(text, channel, rtm, isLong);
   } else {
-    getAcademicSchedule(resultDay, channel, rtm);
+    const inputDay = new Date(`0000${text}`);
+    const resultDay = `${`${inputDay.getMonth() + 1}`.slice(
+      -2,
+    )}/${`${inputDay.getDate()}`}`;
+
+    const checkDay = text.indexOf('/', 1);
+
+    if (checkDay === -1 || checkDay === text.length - 1 || isNaN(inputDay)) {
+      rtm.sendMessage('올바른 날짜를 입력해주세요. ex) 10/24 ', channel);
+    } else {
+      getAcademicSchedule(resultDay, channel, rtm, isLong);
+    }
   }
 };
 

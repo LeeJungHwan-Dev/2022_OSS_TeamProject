@@ -2,7 +2,7 @@ const { RTMClient } = require('@slack/rtm-api');
 const greeting = require('./module/greeting');
 const token = require('./module/token');
 const square = require('./module/square');
-const check = require('./module/scheduleModule/isCheck');
+const check = require('./module/scheduleModule/checkingScheduleSelect');
 const searchAcademicSchedule = require('./module/scheduleModule/searchAcademicScheduleModule');
 
 let isFirst = false;
