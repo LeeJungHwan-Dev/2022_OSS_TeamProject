@@ -16,6 +16,10 @@ rtm.on('message', (message) => {
     switch (text) {
       // 여러 인사말 축약해서 한번에 정리하는 방법?
       case 'hi':
+      case 'hello':
+      case '안녕':
+      case '안녕하세요':
+      case '누구세요':
         greeting(rtm, channel);
         break;
       default:
