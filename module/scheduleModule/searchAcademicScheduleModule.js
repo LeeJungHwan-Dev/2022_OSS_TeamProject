@@ -32,25 +32,48 @@ const checkLongDay = require('./longDayCheckModule');
  * checkLongDay() 사용자가 입력한 text가 날짜가 맞는지 확인하고 '10/19 - 10/21'과 같이 범위가 지정된
  * 날짜인지 판별하는 함수입니다.
  *
+ * isDate()?
+ * 사용자가 입력한 날짜가 올바른 날짜인지 확인하는 함수입니다.
+ *
+ * getDate()?
+ * 사용자가 입력한 값이 날짜가 맞다면 올바른 날짜 포맷으로 변환후 리턴해주는 함수입니다.
+ *
  */
+
+const pattern = /^([1-9]|1[012])\/([1-9]|[12][0-9]|3[0-1])$/;
+let inputDay;
+
+function isDate(text) {
+  inputDay = new Date(`0000${text}`);
+
+  if (isNaN(inputDay)) {
+    return true;
+  }
+  return false;
+}
+
+function getDate() {
+  const resultDay = `${`${
+    inputDay.getMonth() + 1
+  }`}/${`${inputDay.getDate()}`}`;
+
+  // MM/DD로 값을 리턴
+
+  return resultDay;
+}
 
 const sendAcademicSchedule = function (rtm, channel, text) {
   const isLong = checkLongDay(text);
   if (isLong === true) {
     getAcademicSchedule(text, channel, rtm, isLong);
+  } else if (!pattern.test(text) || isDate(text)) {
+    // 날짜 형식이 맞지 않거나, 날짜가 아닐경우
+    rtm.sendMessage(
+      '올바른 날짜를 입력해주세요. ex) 10/24, 10/24 - 10/25 ',
+      channel,
+    );
   } else {
-    const inputDay = new Date(`0000${text}`);
-    const resultDay = `${`${inputDay.getMonth() + 1}`.slice(
-      -2,
-    )}/${`${inputDay.getDate()}`}`;
-
-    const checkDay = text.indexOf('/', 1);
-
-    if (checkDay === -1 || checkDay === text.length - 1 || isNaN(inputDay)) {
-      rtm.sendMessage('올바른 날짜를 입력해주세요. ex) 10/24 ', channel);
-    } else {
-      getAcademicSchedule(resultDay, channel, rtm, isLong);
-    }
+    getAcademicSchedule(getDate(), channel, rtm, isLong);
   }
 };
 

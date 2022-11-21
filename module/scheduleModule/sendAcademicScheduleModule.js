@@ -23,7 +23,7 @@ const searchSchedule = function (day, list, channel, rtm, isLong) {
     /// //////////////////////////////////////////////////////////////
     if (isLong === true) {
       const date = getDay.getDate();
-      if (list[i].includes(date[0]) && list[i].includes(date[2])) {
+      if (list[i].includes(date[0]) && list[i].includes(date[1])) {
         result = list[i].trim().replace(' :', '는').concat('입니다.');
         resultOk = true;
         break;
@@ -40,7 +40,7 @@ const searchSchedule = function (day, list, channel, rtm, isLong) {
 
   if (resultOk === false) {
     rtm.sendMessage(
-      '학사일정이 존재하지 않습니다, 처음으로 돌아갑니다.',
+      '학사일정이 존재하지 않습니다. 처음으로 돌아갑니다.',
       channel,
     );
     check.setCheck(false);

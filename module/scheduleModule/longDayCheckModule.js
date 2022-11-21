@@ -3,19 +3,47 @@
  * date 변수는 사용자가 입력한 text를 띄어쓰기 단위로 나눠 저장한 변수입니다.
  * 만약 날짜가 맞다면 date[0]은 첫번째 날짜 date[2]는 마지막 날짜가 될 것 입니다.
  *
+ * pattern은 날짜의 형식을 확인하기 위한 정규식 입니다.
+ *
  *
  */
 
 let date;
 
+const pattern = /^([1-9]|1[012])\/([1-9]|[12][0-9]|3[0-1])$/;
+
+function isPatternTrue(dateList) {
+  if (pattern.test(dateList[0].trim()) && pattern.test(dateList[1].trim())) {
+    return true;
+  }
+  return false;
+}
+
+function isDayFormatTrue(day) {
+  if (
+    day.includes('-') && // '-' 포함확인
+    day.split('/').length - 1 === 2 && // '/' 2개포함 확인
+    day.length - 1 <= 12 // 길이 확인 최대 12자리 '11/11 - 11/11')
+  ) {
+    return true;
+  }
+  return false;
+}
+
 const longDayCheck = function (day) {
-  if (day.includes('-') && day.split('/').length - 1 === 2) {
-    // 범위 지정 패턴 '-'이 사용되고 '/' 개수가 2개 사용되었는지 확인
-    date = day.toString().split(' ');
-    const date1 = new Date(date[0]); // 올바른 날짜 인지 확인
-    const date2 = new Date(date[2]); // 올바른 날짜 인지 확인
-    if (!isNaN(date1 && date2)) {
-      return true; // 날짜가 맞으면 true
+  if (isDayFormatTrue(day)) {
+    date = day.toString().split('-');
+
+    if (isPatternTrue(date)) {
+      const inputDay = new Date(`0000${date[0]}`);
+      const inputDay1 = new Date(`0000${date[1]}`);
+
+      if (isNaN(inputDay) || isNaN(inputDay1)) {
+        return false;
+      }
+      date[0] = `${inputDay.getMonth() + 1}/${inputDay.getDate()}`;
+      date[1] = `${inputDay1.getMonth() + 1}/${inputDay1.getDate()}`;
+      return true;
     }
   }
   return false; // 아니면 false
