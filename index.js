@@ -3,6 +3,8 @@ const greeting = require('./module/greeting');
 const token = require('./module/token');
 const square = require('./module/square');
 
+const greetings = ['hi', 'hello', '안녕', '안녕하세요', '누구세요'];
+
 const rtm = new RTMClient(token);
 rtm.start();
 
@@ -12,18 +14,9 @@ rtm.on('message', (message) => {
 
   if (!isNaN(text)) {
     square(rtm, text, channel);
+  } else if (greetings.includes(text)) {
+    greeting(rtm, channel);
   } else {
-    switch (text) {
-      // 여러 인사말 축약해서 한번에 정리하는 방법?
-      case 'hi':
-      case 'hello':
-      case '안녕':
-      case '안녕하세요':
-      case '누구세요':
-        greeting(rtm, channel);
-        break;
-      default:
-        rtm.sendMessage("I'm alive", channel);
-    }
+    rtm.sendMessage("I'm alive", channel);
   }
 });
