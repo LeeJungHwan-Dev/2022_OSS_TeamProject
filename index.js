@@ -30,7 +30,7 @@ rtm.on('message', (message) => {
       case '안녕?':
         greeting(rtm, channel);
         break;
-      case '학과 사무실':
+      case '학과 사무실 조회':
         rtm.sendMessage('안내 받을 학과명을 이야기해주세요.', channel);
         check.setCheck(true);
         break;

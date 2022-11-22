@@ -1,5 +1,5 @@
 /**
- * 해당 모듈은 학사 일정 선택 유무를 확인하는 스케줄 check getter/setter 입니다.
+ * 해당 모듈은 학과 사무실 선택 유무를 확인하는 스케줄 check getter/setter 입니다.
  *
  */
 
