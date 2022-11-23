@@ -1,4 +1,4 @@
-const check = require('./isCheck');
+const check = require('../seletedCheckModule');
 // const getAdress = require('./searchAddress');
 
 const searchAddress = function (string, list, channel, rtm) {
@@ -30,7 +30,6 @@ const searchAddress = function (string, list, channel, rtm) {
       } else {
         str = `${result[0].trim()}은 ${result[1].trim()}입니다.`;
         console.log(str);
-
         resultOk = true;
         break;
       }
@@ -41,7 +40,6 @@ const searchAddress = function (string, list, channel, rtm) {
       '학과 이름이 존재하지 않습니다. 처음으로 돌아갑니다.',
       channel,
     );
-
     check.setCheck(false);
   } else {
     rtm.sendMessage(str, channel);

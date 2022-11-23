@@ -16,7 +16,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
     "prettier": "2.7.1"
   },
@@ -26,8 +26,16 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "## ⭐️ 목표",
   "lint-staged": {
     "*.js": "eslint --cache --fix"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeeJungHwan-Dev/2022_OSS_TeamProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LeeJungHwan-Dev/2022_OSS_TeamProject/issues"
+  },
+  "homepage": "https://github.com/LeeJungHwan-Dev/2022_OSS_TeamProject#readme"
 }
