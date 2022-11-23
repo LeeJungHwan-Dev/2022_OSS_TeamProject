@@ -2,9 +2,9 @@ const { RTMClient } = require('@slack/rtm-api');
 const greeting = require('./module/greeting');
 const token = require('./module/token');
 const square = require('./module/square');
-const check = require('./module/newscheduleModule/checkingScheduleSelect');
-const schedule = require('./module/newscheduleModule/indexIngSchedule');
-const scheduleSender = require('./module/newscheduleModule/scheduleSender');
+const check = require('./module/scheduleModule/checkingScheduleSelect');
+const schedule = require('./module/scheduleModule/indexIngSchedule');
+const scheduleSender = require('./module/scheduleModule/scheduleSender');
 
 schedule.indexing();
 
