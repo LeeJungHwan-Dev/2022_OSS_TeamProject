@@ -1,6 +1,4 @@
 const greeting = function (rtm, channel) {
-  console.log("인사를 합니다.");
-
   const rand = Math.floor(Math.random() * 3) + 1; // 1 ~ 3의 난수 생성
 
   if (rand === 1) {
