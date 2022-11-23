@@ -1,4 +1,4 @@
-const check = require('./checkingScheduleSelect');
+const check = require('../seletedCheckModule');
 const schedule = require('./indexIngSchedule');
 
 let keyList;
@@ -40,7 +40,7 @@ function scheduleListSender(dateList, rtm, channel) {
     keyindex += 1;
     // 다음 날짜로 이동
   }
-  check.setCheck(false);
+  check.setDateCheck(false);
 }
 
 function noScheduleCheck(removeBlankDate, rtm, channel) {
@@ -62,7 +62,7 @@ function noScheduleCheck(removeBlankDate, rtm, channel) {
     } else {
       // 일정이 둘다 없을경우
       rtm.sendMessage('학사일정이 존재하지 않습니다.', channel);
-      check.setCheck(false);
+      check.setDateCheck(false);
     }
   } else {
     rtm.sendMessage(
@@ -84,14 +84,14 @@ function scheduleSender(date, rtm, channel) {
     if (schedule.scheduleList[resultDate] === undefined) {
       // key를 기반으로 호출 했을때 value가 없으면 undefined가 리턴된다. 이를 확인하고 아래 메시지를 사용자에게 전달한다.
       rtm.sendMessage('학사일정이 존재하지 않습니다.', channel);
-      check.setCheck(false);
+      check.setDateCheck(false);
     } else {
       // 정상적으로 날짜가 존재하고 value가 존재한다면
       rtm.sendMessage(
         `${resultDate}는 ${schedule.scheduleList[resultDate]}입니다.`,
         channel,
       );
-      check.setCheck(false);
+      check.setDateCheck(false);
       // 사용자에게 key와 value가 존재할 경우 존재하는 일정을 전달한다.
     }
   } else if (pattern2.test(removeBlankDate)) {
