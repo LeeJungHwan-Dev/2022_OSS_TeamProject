@@ -86,7 +86,11 @@ function scheduleSender(date, rtm, channel) {
       rtm.sendMessage('학사일정이 존재하지 않습니다.', channel);
       check.setCheck(false);
     } else {
-      rtm.sendMessage(schedule.scheduleList[resultDate], channel);
+      // 정상적으로 날짜가 존재하고 value가 존재한다면
+      rtm.sendMessage(
+        `${resultDate}는 ${schedule.scheduleList[resultDate]}입니다.`,
+        channel,
+      );
       check.setCheck(false);
       // 사용자에게 key와 value가 존재할 경우 존재하는 일정을 전달한다.
     }
