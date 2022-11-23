@@ -8,6 +8,8 @@ const scheduleSender = require('./module/scheduleModule/scheduleSender');
 
 schedule.indexing();
 
+const greetings = ['hi', 'hello', '안녕', '안녕하세요', '누구세요'];
+
 const rtm = new RTMClient(token);
 rtm.start();
 
@@ -24,17 +26,12 @@ rtm.on('message', (message) => {
     scheduleSender(text, rtm, channel);
   } else if (!isNaN(text)) {
     square(rtm, text, channel);
+  } else if (greetings.includes(text)) {
+    greeting(rtm, channel);
+  } else if (text === '학사일정') {
+    rtm.sendMessage('안내 받을 날짜를 이야기해주세요.', channel);
+    check.setCheck(true);
   } else {
-    switch (text) {
-      case '안녕?':
-        greeting(rtm, channel);
-        break;
-      case '학사일정':
-        rtm.sendMessage('안내 받을 날짜를 이야기해주세요.', channel);
-        check.setCheck(true);
-        break;
-      default:
-        rtm.sendMessage(" I'm alives", channel);
-    }
+    rtm.sendMessage(" I'm alives", channel);
   }
 });
