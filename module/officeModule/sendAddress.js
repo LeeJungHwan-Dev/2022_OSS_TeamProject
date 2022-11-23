@@ -25,6 +25,10 @@ const searchAddress = function (string, list, channel, rtm) {
       result = `${list[i]} 입니다`;
       result = list[i].trim().split('-');
 
+      if (result[0] !== string) {
+        console.log('틀린값 입니다');
+      }
+
       str = `${result[0].trim()}은 ${result[1].trim()}입니다.`;
       console.log(str);
 
