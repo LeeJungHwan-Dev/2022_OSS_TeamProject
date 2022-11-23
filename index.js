@@ -3,6 +3,8 @@ const greeting = require('./module/greeting');
 const token = require('./module/token');
 const square = require('./module/square');
 
+const greetings = ['hi', 'hello', '안녕', '안녕하세요', '누구세요'];
+
 const rtm = new RTMClient(token);
 rtm.start();
 
@@ -10,15 +12,11 @@ rtm.on('message', (message) => {
   const { channel } = message;
   const { text } = message;
 
-  if (!Number.isNaN(text)) {
+  if (!isNaN(text)) {
     square(rtm, text, channel);
+  } else if (greetings.includes(text)) {
+    greeting(rtm, channel);
   } else {
-    switch (text) {
-      case 'hi':
-        greeting(rtm, channel);
-        break;
-      default:
-        rtm.sendMessage(" I'm alive", channel);
-    }
+    rtm.sendMessage("I'm alive", channel);
   }
 });
