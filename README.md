@@ -85,18 +85,22 @@
 
 학사일정 : module -> 학사일정.txt 이름으로 데이터 저장
 
-  module </br>
-  |_scheduleModule </br>
-  |__haksa.txt  </br>
-    
+~~~
+  module 
+  |_scheduleModule 
+  |_|_haksa.txt
+~~~
+
 * 데이터 저장 형식 : M/D : comment
 * 데이터 저장 형식2 : M/D - M/D : comment
 
 학과사무실 : module -> dept.txt 이름으로 데이터 저장
 
-module </br>
-  |_officeModule </br>
-  |_dept.txt  </br>
+~~~
+module 
+  |_officeModule 
+  |_|_dept.txt  
+~~~
   
 * 데이터 저장 형식 : 학과이름 : 위치
 
@@ -120,7 +124,7 @@ module </br>
 </br>
 
 ## License
-
+~~~
 Copyright (c) 2022 JungHwan Lee.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
