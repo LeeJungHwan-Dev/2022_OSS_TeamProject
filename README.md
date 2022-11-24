@@ -10,7 +10,7 @@
 ## ✅ PreView
 |학사일정 조회|학과 사무실 조회|
 |---------|-------------|
-|![학과 사무실 조회](https://user-images.githubusercontent.com/93726941/203681533-092c4aec-f80a-46f3-9033-7f4d90f578b5.gif)|![학사일정](https://user-images.githubusercontent.com/93726941/203681566-7a18ab57-c2a5-4e8a-890d-ce79848bc25a.gif)|
+|![학사일정](https://user-images.githubusercontent.com/93726941/203681566-7a18ab57-c2a5-4e8a-890d-ce79848bc25a.gif)|![학과 사무실 조회](https://user-images.githubusercontent.com/93726941/203681533-092c4aec-f80a-46f3-9033-7f4d90f578b5.gif)|
 
 </br>
 
