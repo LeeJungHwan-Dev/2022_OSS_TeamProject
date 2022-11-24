@@ -3,9 +3,26 @@ const scheduleList = {};
 
 const pattern = /^([1-9]|1[012])\/([1-9]|[12][0-9]|3[0-1])$/;
 
+function isOverLapInfo(firstDate) {
+  if (
+    Object.keys(scheduleList).indexOf(
+      `${firstDate.getMonth() + 1}/${firstDate.getDate()}`,
+    ) === -1
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function shortDate(date, schedule) {
   // 단일 날짜에 대한 key value 저장 함수입니다.
-  scheduleList[date.toString()] = schedule;
+  const isDate = new Date(date);
+
+  if (isOverLapInfo(isDate)) {
+    scheduleList[date.toString()] = schedule;
+  } else {
+    scheduleList[`${date.toString()}r`] = schedule;
+  }
 }
 
 function longDate(date, schedule) {
@@ -14,17 +31,44 @@ function longDate(date, schedule) {
   const lastDate = new Date(date[2]);
 
   while (true) {
-    scheduleList[`${firstDate.getMonth() + 1}/${firstDate.getDate()}`] =
-      schedule;
-    firstDate.setDate(firstDate.getDate() + 1);
-
-    if (
-      firstDate.getMonth() + 1 === lastDate.getMonth() + 1 &&
-      firstDate.getDate() === lastDate.getDate()
-    ) {
+    const save = function () {
       scheduleList[`${firstDate.getMonth() + 1}/${firstDate.getDate()}`] =
         schedule;
-      break;
+    };
+
+    const saveOver = function () {
+      scheduleList[`${firstDate.getMonth() + 1}/${firstDate.getDate()}r`] =
+        schedule;
+    };
+
+    const checkBreak = function () {
+      if (
+        firstDate.getMonth() + 1 === lastDate.getMonth() + 1 &&
+        firstDate.getDate() === lastDate.getDate()
+      ) {
+        return true;
+      }
+      return false;
+    };
+
+    if (isOverLapInfo(firstDate)) {
+      // 중복 일정이 아닌경우
+      save();
+      firstDate.setDate(firstDate.getDate() + 1);
+
+      if (checkBreak()) {
+        save();
+        break;
+      }
+    } else {
+      // 중복 일정인 경우
+      saveOver();
+      firstDate.setDate(firstDate.getDate() + 1);
+
+      if (checkBreak()) {
+        saveOver();
+        break;
+      }
     }
   }
 }
@@ -46,7 +90,7 @@ function checkDate(dateList) {
 const indexing = function () {
   const fs = require('fs');
 
-  fs.readFile('module/haksa.txt', 'utf8', (err, date) => {
+  fs.readFile('module/scheduleModule/haksa.txt', 'utf8', (err, date) => {
     if (err) {
       console.error(err);
     }

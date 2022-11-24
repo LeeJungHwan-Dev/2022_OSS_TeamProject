@@ -14,10 +14,10 @@ const greetings = ['hi', 'hello', '안녕', '안녕하세요', '누구세요'];
 const rtm = new RTMClient(token);
 rtm.start();
 
-rtm.sendMessage(
+/* rtm.sendMessage(
   '전북대학교 통합 지원 챗봇 입니다. 원하는 항목의 내용을 입력해주세요. \n 1. 학사일정 조회 \n 2. 식단조회 \n 3. 학과 사무실 조회',
   'D047ADF9CH4',
-);
+); */
 
 rtm.on('message', (message) => {
   const { channel } = message;

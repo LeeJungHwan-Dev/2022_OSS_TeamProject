@@ -46,12 +46,12 @@ const checkPatter = function (text) {
     pattern3.test(text) ||
     pattern4.test(text) ||
     pattern5.test(text) ||
-    pattern2.test(text) ||
     pattern6.test(text)
   ) {
     status = 1;
   }
   if (
+    pattern2.test(text) ||
     pattern7.test(text) ||
     pattern8.test(text) ||
     pattern9.test(text) ||
