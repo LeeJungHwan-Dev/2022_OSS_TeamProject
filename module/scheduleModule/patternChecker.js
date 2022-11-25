@@ -45,20 +45,21 @@ const checkPatter = function (text) {
     pattern.test(text) ||
     pattern3.test(text) ||
     pattern4.test(text) ||
-    pattern5.test(text) ||
-    pattern6.test(text)
+    pattern5.test(text)
   ) {
     status = 1;
-  }
-  if (
+  } else if (
     pattern2.test(text) ||
     pattern7.test(text) ||
     pattern8.test(text) ||
     pattern9.test(text) ||
     pattern10.test(text) ||
+    pattern6.test(text) ||
     pattern11.test(text)
   ) {
     status = 2;
+  } else {
+    status = -1;
   }
 };
 
