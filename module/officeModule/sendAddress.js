@@ -1,50 +1,22 @@
-const check = require('../seletedCheckModule');
-// const getAdress = require('./searchAddress');
+const getOfficeAddress = require('./getOfficeAddress');
 
-const searchAddress = function (string, list, channel, rtm) {
-  /**
-   * 모듈 설명
-   *
-   * 해당 모듈은 넘겨받은 텍스트와 파일에서 읽어온 내용을 비교하며
-   * 해당 학과 이름이 있는 줄의 내용을 출력하는 모듈입니다.
-   *
-   * resultOk는 해당 날짜의 학과 이름이 있으면 true 없으면 false로 설정됩니다.
-   * result는 학과 이름이 담겨 있는 변수 입니다.
-   *
-   * check는 학과 사무실 주소 안내가 종료가 되었으므로 false값을 줌으로써 최초 화면으로 탈출할 수 있게 구현 됩니다.
-   *
-   */
+/**
+ * 모듈 설명
+ *
+ * 해당 모듈은 index.js에서 최초로 실행되는 모듈입니다.
+ * 이후 올바른 값이 입력되면 입력한 텍스트, channel, rtm순으로
+ * 주소 파일을 읽어주는 모듈로 값을 전달합니다. => getOfficeAddress()
+ *
+ * 각 매개변수 설명
+ * rtm => slack 챗봇 사용을 위해 필요한 rtm
+ * channel => slack 챗봇 사용을 위해 필요한 channel 변수
+ * text => 사용자가 입력한 텍스트
+ *
+ * 텍스트의 변환 허용을 하기 위한 모듈
+ */
 
-  let resultOk = false;
-  let result;
-  let str;
-
-  for (let i = 0; i < list.length; i += 1) {
-    /// /////////////////// 유효한 학과 이름 입력일 경우//////////////////////
-    if (list[i].includes(string)) {
-      result = `${list[i]} 입니다`;
-      result = list[i].trim().split('-');
-
-      if (result[0].trim() !== string) {
-        console.log('틀린값 입니다');
-      } else {
-        str = `${result[0].trim()}은 ${result[1].trim()}입니다.`;
-        console.log(str);
-        resultOk = true;
-        break;
-      }
-    }
-  }
-  if (resultOk === false) {
-    rtm.sendMessage(
-      '학과 이름이 존재하지 않습니다. 처음으로 돌아갑니다.',
-      channel,
-    );
-    check.setCheck(false);
-  } else {
-    rtm.sendMessage(str, channel);
-    check.setCheck(false);
-  }
+const sendAddress = function (rtm, channel, text) {
+  getOfficeAddress(text, channel, rtm);
 };
 
-module.exports = searchAddress;
+module.exports = sendAddress;

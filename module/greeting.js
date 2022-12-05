@@ -6,14 +6,14 @@ const greeting = function (rtm, channel) {
       `안녕하세요? 전북대학교 챗봇입니다.
 다음의 기능들을 제공하고 있습니다.
 
-1. 학사일정
+1. 학사일정 조회
 2. 식단 조회
 3. 학과 사무실 조회`,
       channel,
     );
   } else if (rand === 2) {
     rtm.sendMessage(
-      `Hello? I'm Chonbuk National University chatbot.
+      `Hello? I'm Jeonbuk National University chatbot.
 I provide the following features.
 
 1. Academic Calendar
