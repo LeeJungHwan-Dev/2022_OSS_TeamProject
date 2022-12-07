@@ -1,6 +1,7 @@
 const { assert } = require('chai');
+const getDist = require('js-levenshtein');
 const schedule = require('../module/scheduleModule/indexIngSchedule');
-const patter = require('../module/scheduleModule/patternChecker');
+const pattern = require('../module/scheduleModule/patternChecker');
 
 schedule.indexing();
 
@@ -23,14 +24,18 @@ describe('Start Schedule Test', () => {
   });
 
   it('날짜 패턴 검사 테스트 #4', () => {
-    assert.equal(patter.getStatus('10/1-10/24'), 2);
-    assert.equal(patter.getStatus('10/01-10/24'), 2);
-    assert.equal(patter.getStatus('1/01-10/24'), 2);
-    assert.equal(patter.getStatus('10/1'), 1);
-    assert.equal(patter.getStatus('0/01-10/24'), -1);
-    assert.equal(patter.getStatus('/101'), -1);
-    assert.equal(patter.getStatus('00/00'), -1);
-    assert.equal(patter.getStatus('10/33'), -1);
-    assert.equal(patter.getStatus('ㅁ'), -1);
+    assert.equal(pattern.getStatus('10/1-10/24'), 2);
+    assert.equal(pattern.getStatus('10/01-10/24'), 2);
+    assert.equal(pattern.getStatus('1/01-10/24'), 2);
+    assert.equal(pattern.getStatus('10/1'), 1);
+    assert.equal(pattern.getStatus('0/01-10/24'), -1);
+    assert.equal(pattern.getStatus('/101'), -1);
+    assert.equal(pattern.getStatus('00/00'), -1);
+    assert.equal(pattern.getStatus('10/33'), -1);
+    assert.equal(pattern.getStatus('ㅁ'), -1);
+  });
+
+  it('오타 학과 출력 모듈 작동 검사 #5', () => {
+    assert.equal(getDist('HONDA', 'HYUNDAI'), 3);
   });
 });
