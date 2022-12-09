@@ -1,4 +1,4 @@
-const { assert } = require('chai');
+const assert = require('assert');
 const getDist = require('js-levenshtein');
 const schedule = require('../module/scheduleModule/indexIngSchedule');
 const pattern = require('../module/scheduleModule/patternChecker');

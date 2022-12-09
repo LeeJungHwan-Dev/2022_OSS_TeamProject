@@ -1,4 +1,5 @@
 .DS_Store
+testSpecModule/
 module/token.js
 node_modules/
 .husky/

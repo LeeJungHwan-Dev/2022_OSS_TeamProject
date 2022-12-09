@@ -8,7 +8,6 @@ const scheduleSender = require('./module/scheduleModule/scheduleSender');
 const searchOfficeAddress = require('./module/officeModule/searchAddress');
 
 schedule.indexing();
-
 const greetings = ['hi', 'hello', '안녕', '안녕하세요', '누구세요'];
 
 const rtm = new RTMClient(token);
