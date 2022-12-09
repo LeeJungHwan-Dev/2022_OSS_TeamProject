@@ -2,8 +2,11 @@ const assert = require('assert');
 const getDist = require('js-levenshtein');
 const schedule = require('../module/scheduleModule/indexIngSchedule');
 const pattern = require('../module/scheduleModule/patternChecker');
+const star = require('../module/getStarModule/getStart');
 
+star.editStar();
 schedule.indexing();
+const testStar = star.getStar();
 
 describe('Start Schedule Test', () => {
   it('단일 날짜 테스트 #1', () => {
@@ -37,5 +40,9 @@ describe('Start Schedule Test', () => {
 
   it('오타 학과 출력 모듈 작동 검사 #5', () => {
     assert.equal(getDist('HONDA', 'HYUNDAI'), 3);
+  });
+
+  it('별점 모듈 이동 간 데이터 손실 테스트 #6', () => {
+    assert.equal(testStar, star.getStar());
   });
 });
