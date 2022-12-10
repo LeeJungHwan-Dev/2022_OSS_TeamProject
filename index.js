@@ -1,7 +1,7 @@
 const { RTMClient } = require('@slack/rtm-api');
 const check = require('./module/seletedCheckModule');
 const greeting = require('./module/greeting');
-const infoFood = require('./infoFood');
+const infoFood = require('./module/getMenuModule/infoFood');
 const token = require('./module/token');
 const square = require('./module/square');
 const schedule = require('./module/scheduleModule/indexIngSchedule');
