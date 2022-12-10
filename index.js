@@ -6,7 +6,7 @@ const token = require('./module/token');
 const square = require('./module/square');
 const schedule = require('./module/scheduleModule/indexIngSchedule');
 const scheduleSender = require('./module/scheduleModule/scheduleSender');
-const searchAddress = require('./module/officeModule/searchAddress');
+const sendAddress = require('./module/officeModule/sendAddress');
 
 schedule.indexing();
 const greetings = ['hi', 'hello', '안녕', '안녕하세요', '누구세요'];
@@ -23,7 +23,7 @@ rtm.on('message', (message) => {
   if (check.getDateCheck()) {
     scheduleSender(text, rtm, channel);
   } else if (check.getCheck()) {
-    searchAddress(rtm, channel, text);
+    sendAddress(rtm, channel, text);
   } else if (!isNaN(text)) {
     square(rtm, text, channel);
   } else if (greetings.includes(text)) {
