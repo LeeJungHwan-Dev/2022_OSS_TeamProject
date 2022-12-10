@@ -8,9 +8,15 @@
 </br>
 
 ## ✅ PreView
-|학사일정 조회|학과 사무실 조회|
+|학사일정 조회|학사일정 조회|
 |---------|-------------|
-|![학사일정](https://user-images.githubusercontent.com/93726941/203681566-7a18ab57-c2a5-4e8a-890d-ce79848bc25a.gif)|![학과 사무실 조회](https://user-images.githubusercontent.com/93726941/203681533-092c4aec-f80a-46f3-9033-7f4d90f578b5.gif)|
+|![인사](https://user-images.githubusercontent.com/93726941/206875047-f6869269-c07f-4df3-bb3b-7ca40767c44a.gif)|![학사일정](https://user-images.githubusercontent.com/93726941/206875050-0e89503f-155a-4ea0-9a30-6ff2ebd22638.gif)|
+
+|학과 사무실 조회|학식 조회|
+|---------|-------------|
+|![학과 사무실](https://user-images.githubusercontent.com/93726941/206875059-5579f0de-4d9c-4154-b5b8-4691fba7cfdd.gif)|![학식](https://user-images.githubusercontent.com/93726941/206875063-9f70a022-6206-40c1-9eaa-a16fdddf4133.gif)|
+
+
 
 </br>
 
