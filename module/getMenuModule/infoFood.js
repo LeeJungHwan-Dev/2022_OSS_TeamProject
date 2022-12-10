@@ -1,3 +1,6 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 const axios = require('axios');
 const cheerio = require('cheerio');
 const star = require('../getStarModule/getStart');
