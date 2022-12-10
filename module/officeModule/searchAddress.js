@@ -21,12 +21,14 @@ const searchAddress = function (string, list, channel, rtm) {
   let result;
   let str;
   const distanceArray = [];
+  console.log(string);
   const changedString = changeString(string);
   // 사용자의 입력에 따른 각 학과 사무실 distance 거리
 
   for (let i = 0; i < list.length; i += 1) {
     /// /////////////////// 유효한 학과 이름 입력일 경우//////////////////////
     const data = changeString(list[i]);
+    console.log(list[i]);
 
     console.log(data);
 
@@ -42,6 +44,8 @@ const searchAddress = function (string, list, channel, rtm) {
     if (data.includes(changedString)) {
       result = `${list[i]} 입니다`;
       result = list[i].trim().split('-');
+
+      console.log(result);
 
       if (changeString(result[0]).trim() !== changedString) {
         console.log('틀린값 입니다');
