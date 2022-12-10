@@ -1,4 +1,5 @@
 const check = require('../seletedCheckModule');
+const changeString = require('./changeString');
 
 const searchAddress = function (string, list, channel, rtm) {
   /**
@@ -18,15 +19,17 @@ const searchAddress = function (string, list, channel, rtm) {
   let result;
   let str;
 
+  const changedString = changeString(string);
+
   for (let i = 0; i < list.length; i += 1) {
     /// /////////////////// 유효한 학과 이름 입력일 경우//////////////////////
-    const data = list[i].toLowerCase().replace(/ /g, '');
+    const data = changeString(list[i]); // list[i].toLowerCase().replace(/ /g, '');
 
-    if (data.includes(string)) {
+    if (data.includes(changedString)) {
       result = `${list[i]} 입니다`;
       result = list[i].trim().split('-');
 
-      if (result[0].toLowerCase().replace(/ /g, '').trim() !== string) {
+      if (changeString(result[0]).trim() !== changedString) {
         console.log('틀린값 입니다');
       } else {
         str = `${result[0].trim()}은 ${result[1].trim()}입니다.`;

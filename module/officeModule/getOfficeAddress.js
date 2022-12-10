@@ -15,15 +15,8 @@ const getAddressFile = function (text, channel, rtm) {
     if (err) {
       console.error(err);
     }
-    console.log(text.toLowerCase());
-    console.log(data);
 
-    return searchAddress(
-      text.toLowerCase().replace(/ /g, ''),
-      data.split('\n'),
-      channel,
-      rtm,
-    );
+    return searchAddress(text, data.split('\n'), channel, rtm);
   });
 };
 
