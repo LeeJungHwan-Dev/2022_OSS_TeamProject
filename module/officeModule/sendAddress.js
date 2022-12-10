@@ -28,8 +28,9 @@ const searchAddress = function (string, list, channel, rtm) {
     /** 올바른 문자열 유사도 검사를 위해 전부 50글자로 채워넣고 검사를 실시한다. */
     let dptName = list[i].trim().split('-')[0];
     while (dptName.length <= 50) {
-      dptName += '!';
+      dptName += '📆';
     }
+
     distanceArray[i] = distance(dptName, string);
     /** 올바른 문자열 유사도 검사를 위해 전부 50글자로 채워넣고 검사를 실시한다. */
 
@@ -47,6 +48,9 @@ const searchAddress = function (string, list, channel, rtm) {
       }
     }
   }
+
+  console.log(distanceArray);
+  console.log(distanceArray[1]);
 
   if (resultOk === false) {
     rtm.sendMessage(
