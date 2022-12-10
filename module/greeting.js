@@ -13,7 +13,7 @@ const greeting = function (rtm, channel) {
     );
   } else if (rand === 2) {
     rtm.sendMessage(
-      `Hello? I'm Chonbuk National University chatbot.
+      `Hello? I'm Jeonbuk National University chatbot.
 I provide the following features.
 
 1. Academic Calendar
