@@ -9,10 +9,6 @@ const scheduleSender = require('./module/scheduleModule/scheduleSender');
 const searchAddress = require('./module/officeModule/searchAddress');
 
 schedule.indexing();
-
-const searchOfficeAddress = require('./module/officeModule/sendAddress');
-
-schedule.indexing();
 const greetings = ['hi', 'hello', '안녕', '안녕하세요', '누구세요'];
 
 const rtm = new RTMClient(token);
@@ -30,9 +26,6 @@ rtm.on('message', (message) => {
     searchAddress(rtm, channel, text);
   } else if (!isNaN(text)) {
     square(rtm, text, channel);
-  } else if (text === '학과 사무실 조회') {
-    rtm.sendMessage('학과 이름을 입력해주세요.', channel);
-    check.setCheck(true);
   } else if (greetings.includes(text)) {
     greeting(rtm, channel);
   } else if (text === '학사일정 조회') {
