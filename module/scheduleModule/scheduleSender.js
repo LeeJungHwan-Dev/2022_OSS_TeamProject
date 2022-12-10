@@ -8,27 +8,25 @@ let keyList;
 function scheduleListSender(firstdate, lastdate, rtm, channel) {
   let keyindex = keyList.indexOf(firstdate);
   // keyindex는 사용자가 입력한 첫째날 인덱스부터 더해질 변수이다.
+  const sendMessage = function () {
+    rtm.sendMessage(
+      `${keyList.at(keyindex).replace('r', '')}는 ${
+        schedule.scheduleList[keyList.at(keyindex)]
+      }입니다.`,
+      channel,
+    );
+  };
   while (true) {
     if (
       keyList.at(keyindex) === undefined ||
       keyList.at(keyindex) === lastdate
     ) {
       // 날짜가 더이상 존재하지 않거나, 입력한 마지막 날짜와 같을경우 break를 위한 if문
-      rtm.sendMessage(
-        `${keyList.at(keyindex)}는 ${
-          schedule.scheduleList[keyList.at(keyindex)]
-        }입니다.`,
-        channel,
-      );
+      sendMessage();
       // 9/7일까지 있을경우 9/6일까지 출력되어 마지막에 한번더 출력하여 마지막 날짜까지 출력해주는 로직
       break;
     } else {
-      rtm.sendMessage(
-        `${keyList.at(keyindex)}는 ${
-          schedule.scheduleList[keyList.at(keyindex)]
-        }입니다.`,
-        channel,
-      );
+      sendMessage();
       // 날짜를 key로 사용하여 value값을 찾아 사용자에게 일정을 전송한다.
       // keyindex에는 증가한 날짜 key index가 들어있다.
     }
@@ -43,6 +41,7 @@ function noScheduleCheck(removeBlankDate, rtm, channel) {
   const dateList = removeBlankDate.split('-');
   const firstdate = new Date(dateList[0]);
   const lastdate = new Date(dateList[1]);
+
   const keyindex1 = keyList.indexOf(
     `${firstdate.getMonth() + 1}/${firstdate.getDate()}`,
   );
@@ -84,19 +83,27 @@ function scheduleSender(date, rtm, channel) {
   if (getPattern.getStatus(removeBlankDate) === 1) {
     // 단일 날짜 입력에 따른 패턴 검사
     let resultDate = new Date(`0000${date}`);
+    const dateValueOverLap = `${
+      resultDate.getMonth() + 1
+    }/${resultDate.getDate()}r`;
     resultDate = `${resultDate.getMonth() + 1}/${resultDate.getDate()}`;
+
+    const dateValue = schedule.scheduleList[resultDate];
     // 날짜를 yyyy/mm/dd 순으로 만들고 날짜 key를 생성한다. => resultDate
 
-    if (schedule.scheduleList[resultDate] === undefined) {
+    if (dateValue === undefined) {
       // key를 기반으로 호출 했을때 value가 없으면 undefined가 리턴된다. 이를 확인하고 아래 메시지를 사용자에게 전달한다.
       rtm.sendMessage('학사일정이 존재하지 않습니다.', channel);
       check.setDateCheck(false);
     } else {
       // 정상적으로 날짜가 존재하고 value가 존재한다면
-      rtm.sendMessage(
-        `${resultDate}는 ${schedule.scheduleList[resultDate]}입니다.`,
-        channel,
-      );
+      rtm.sendMessage(`${resultDate}는 ${dateValue}입니다.`, channel);
+      if (schedule.scheduleList[dateValueOverLap] !== undefined) {
+        rtm.sendMessage(
+          `${resultDate}는 ${schedule.scheduleList[dateValueOverLap]}입니다.`,
+          channel,
+        );
+      }
       check.setDateCheck(false);
       // 사용자에게 key와 value가 존재할 경우 존재하는 일정을 전달한다.
     }

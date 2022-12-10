@@ -1,4 +1,6 @@
+const distance = require('js-levenshtein');
 const check = require('../seletedCheckModule');
+const getDept = require('../distanceModule/getDistanceDept');
 const changeString = require('./changeString');
 
 const searchAddress = function (string, list, channel, rtm) {
@@ -18,12 +20,24 @@ const searchAddress = function (string, list, channel, rtm) {
   let resultOk = false;
   let result;
   let str;
-
+  const distanceArray = [];
   const changedString = changeString(string);
+  // 사용자의 입력에 따른 각 학과 사무실 distance 거리
 
   for (let i = 0; i < list.length; i += 1) {
     /// /////////////////// 유효한 학과 이름 입력일 경우//////////////////////
-    const data = changeString(list[i]); // list[i].toLowerCase().replace(/ /g, '');
+    const data = changeString(list[i]);
+
+    console.log(data);
+
+    /** 올바른 문자열 유사도 검사를 위해 전부 50글자로 채워넣고 검사를 실시한다. */
+    let dptName = data.trim().split('-')[0];
+    while (dptName.length <= 50) {
+      dptName += '📆';
+    }
+
+    distanceArray[i] = distance(dptName, changedString);
+    /** 올바른 문자열 유사도 검사를 위해 전부 50글자로 채워넣고 검사를 실시한다. */
 
     if (data.includes(changedString)) {
       result = `${list[i]} 입니다`;
@@ -39,11 +53,16 @@ const searchAddress = function (string, list, channel, rtm) {
       }
     }
   }
+
+  console.log(distanceArray);
+  console.log(distanceArray[1]);
+
   if (resultOk === false) {
     rtm.sendMessage(
-      '학과 이름이 존재하지 않습니다. 처음으로 돌아갑니다.',
+      '이런! 입력하는 값과 일치하는 학과는 없네요! 대신에 유사한 학과를 찾아볼게요.',
       channel,
     );
+    getDept.sendDept(list, distanceArray, channel, rtm);
     check.setCheck(false);
   } else {
     rtm.sendMessage(str, channel);
