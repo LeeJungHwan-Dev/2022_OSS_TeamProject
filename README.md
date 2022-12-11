@@ -136,7 +136,7 @@ module
 
 ## ⚙️ 테스트 환경 
 #### OS : Windows , MacOS ventura 13.0
-#### IDE : VS code
+#### IDE : VS code 1.72.2
 #### Language : JavaScript
 #### CheckTool : ESLint , Prettier , Hook(husky)
 #### Collaboration Tools : Git , GitHub, Slack , Notion
